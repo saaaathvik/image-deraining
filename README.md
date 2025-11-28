@@ -28,6 +28,11 @@ This project leverages deep learning techniques to remove rain streaks from imag
 
 ---
 
+## Sample Outputs
+![Sample Output Screenshot](output.png)
+
+---
+
 ## Dataset
 The dataset includes pairs of rainy images and their ground truth (rain-free images). It can be accessed [here](https://github.com/jinnovation/rainy-image-dataset).
 
