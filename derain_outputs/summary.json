@@ -1,0 +1,24 @@
+{
+  "device": "Tesla T4 x2",
+  "mixed_precision": true,
+  "base_filters": 32,
+  "parameters": 1880259,
+  "train_val_test_pairs": [
+    11200,
+    1400,
+    1400
+  ],
+  "epochs_trained": 82,
+  "best_epoch": 72,
+  "training_minutes": 106.1,
+  "val_psnr": 33.499,
+  "test_psnr_rainy": 23.135,
+  "test_psnr_output": 33.658,
+  "test_ssim_rainy": 0.7587,
+  "test_ssim_output": 0.9409,
+  "latency_ms": {
+    "256x256": 3.0,
+    "640x480": 11.05,
+    "1280x720": 32.69
+  }
+}

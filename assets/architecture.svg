@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Residual U-Net: the encoder halves the size three times with stride-2 convolutions down to a bottleneck at one eighth resolution, the decoder doubles it back with resize-plus-convolution and concatenated skips, and a global skip adds the input to the predicted correction. Every block is a residual block of two 3 by 3 convolutions with a skip path.">
+  <style>
+    .bg { fill: #ffffff; stroke: #d3dce3; stroke-width: 1; }
+    text { fill: #14202b; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11.5px; }
+    .title { font-size: 18px; font-weight: 700; }
+    .h { font-size: 13px; font-weight: 600; }
+    .t-b { font-weight: 600; }
+    .t-m { fill: #566776; }
+    .t-mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 11px; }
+    .ln { stroke: #566776; stroke-width: 1.5; fill: none; }
+    .ln-dash { stroke: #566776; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+    .ah { fill: #566776; }
+    .b-plain { fill: #ffffff; stroke: #c3ced7; stroke-width: 1.5; }
+    .b-f { fill: #d6edef; stroke: #0b7480; stroke-width: 1.5; }
+    .b-f2 { fill: #e9f6f7; stroke: #0b7480; stroke-width: 1.5; }
+    .skip-f { stroke: #0b7480; stroke-width: 1.5; fill: none; stroke-dasharray: 2 4; }
+    .plus { fill: #ffffff; stroke: #14202b; stroke-width: 1.5; }
+    .t-f { fill: #0b7480; font-weight: 600; }
+    .dot { fill: #14202b; }
+    .rule { stroke: #d3dce3; stroke-width: 1; }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="799" height="599" rx="10"/>
+
+  <text class="title" x="24" y="38">Residual U-Net</text>
+
+  <g transform="translate(10 56)">
+    <path class="ln-dash" d="M40 42 V20 H730 V56" marker-end="url(#arrow)"/>
+    <text class="t-m" x="385" y="13" text-anchor="middle">global skip: output = input + predicted correction</text>
+
+    <rect class="b-plain" x="10" y="42" width="60" height="56" rx="5"/>
+    <text class="t-b" x="40" y="66" text-anchor="middle">Rainy</text>
+    <text class="t-mono t-m" x="40" y="82" text-anchor="middle">H×W×3</text>
+    <line class="ln" x1="70" y1="70" x2="100" y2="70" marker-end="url(#arrow)"/>
+
+    <rect class="b-f" x="100" y="42" width="110" height="56" rx="5"/>
+    <text class="t-b" x="155" y="66" text-anchor="middle">Res block</text>
+    <text class="t-mono t-m" x="155" y="82" text-anchor="middle">32 ch · H</text>
+    <rect class="b-f" x="100" y="126" width="110" height="48" rx="5"/>
+    <text class="t-b" x="155" y="146" text-anchor="middle">Res block</text>
+    <text class="t-mono t-m" x="155" y="162" text-anchor="middle">64 ch · H/2</text>
+    <rect class="b-f" x="100" y="210" width="110" height="40" rx="5"/>
+    <text class="t-b" x="155" y="227" text-anchor="middle">Res block</text>
+    <text class="t-mono t-m" x="155" y="241" text-anchor="middle">128 ch · H/4</text>
+    <rect class="b-f" x="285" y="294" width="110" height="32" rx="5"/>
+    <text class="t-b" x="340" y="308" text-anchor="middle">2 Res blocks</text>
+    <text class="t-mono t-m" x="340" y="320" text-anchor="middle">128 ch · H/8</text>
+
+    <line class="ln" x1="155" y1="98" x2="155" y2="124" marker-end="url(#arrow)"/>
+    <text class="t-m" x="163" y="116">stride-2 conv</text>
+    <line class="ln" x1="155" y1="174" x2="155" y2="208" marker-end="url(#arrow)"/>
+    <text class="t-m" x="163" y="196">stride-2 conv</text>
+    <path class="ln" d="M155 250 V310 H283" marker-end="url(#arrow)"/>
+    <text class="t-m" x="220" y="303" text-anchor="middle">stride-2 conv</text>
+
+    <path class="ln" d="M395 310 H525 V252" marker-end="url(#arrow)"/>
+    <text class="t-m" x="460" y="303" text-anchor="middle">resize + conv</text>
+
+    <rect class="b-f2" x="470" y="210" width="110" height="40" rx="5"/>
+    <text class="t-b" x="525" y="227" text-anchor="middle">Res block</text>
+    <text class="t-mono t-m" x="525" y="241" text-anchor="middle">128 ch · H/4</text>
+    <rect class="b-f2" x="470" y="126" width="110" height="48" rx="5"/>
+    <text class="t-b" x="525" y="146" text-anchor="middle">Res block</text>
+    <text class="t-mono t-m" x="525" y="162" text-anchor="middle">64 ch · H/2</text>
+    <rect class="b-f2" x="470" y="42" width="110" height="56" rx="5"/>
+    <text class="t-b" x="525" y="66" text-anchor="middle">Res block</text>
+    <text class="t-mono t-m" x="525" y="82" text-anchor="middle">32 ch · H</text>
+
+    <line class="ln" x1="525" y1="208" x2="525" y2="176" marker-end="url(#arrow)"/>
+    <text class="t-m" x="533" y="196">resize + conv</text>
+    <line class="ln" x1="525" y1="124" x2="525" y2="100" marker-end="url(#arrow)"/>
+    <text class="t-m" x="533" y="116">resize + conv</text>
+
+    <line class="skip-f" x1="210" y1="70" x2="468" y2="70" marker-end="url(#arrow)"/>
+    <text class="t-f" x="340" y="64" text-anchor="middle">skip · concat · 1×1 fuse</text>
+    <line class="skip-f" x1="210" y1="150" x2="468" y2="150" marker-end="url(#arrow)"/>
+    <text class="t-f" x="340" y="144" text-anchor="middle">skip · concat · 1×1 fuse</text>
+    <line class="skip-f" x1="210" y1="230" x2="468" y2="230" marker-end="url(#arrow)"/>
+    <text class="t-f" x="340" y="224" text-anchor="middle">skip · concat · 1×1 fuse</text>
+
+    <line class="ln" x1="580" y1="70" x2="628" y2="70" marker-end="url(#arrow)"/>
+    <text class="t-m" x="603" y="62" text-anchor="middle">1×1</text>
+    <text class="t-m" x="603" y="86" text-anchor="middle">conv</text>
+    <rect class="b-plain" x="628" y="42" width="74" height="56" rx="5"/>
+    <text class="t-b" x="665" y="66" text-anchor="middle">Correction</text>
+    <text class="t-mono t-m" x="665" y="82" text-anchor="middle">H×W×3</text>
+    <line class="ln" x1="702" y1="70" x2="718" y2="70" marker-end="url(#arrow)"/>
+    <circle class="plus" cx="730" cy="70" r="12"/>
+    <text class="t-b" x="730" y="75" text-anchor="middle" style="font-size:16px">+</text>
+    <text class="t-b" x="730" y="102" text-anchor="middle">Derained</text>
+    <text class="t-b" x="730" y="116" text-anchor="middle">image</text>
+
+  </g>
+
+  <line class="rule" x1="24" y1="406" x2="776" y2="406"/>
+
+  <g transform="translate(165 420)">
+    <text class="h" x="0" y="14">Residual block</text>
+    <text class="t-b" x="14" y="56">x</text>
+    <circle class="dot" cx="30" cy="70" r="3"/>
+    <line class="ln" x1="30" y1="70" x2="56" y2="70" marker-end="url(#arrow)"/>
+    <rect class="b-f" x="56" y="48" width="100" height="44" rx="5"/>
+    <text x="106" y="67" text-anchor="middle">3×3 conv</text>
+    <text class="t-m" x="106" y="82" text-anchor="middle">+ ReLU</text>
+    <line class="ln" x1="156" y1="70" x2="180" y2="70" marker-end="url(#arrow)"/>
+    <rect class="b-f" x="180" y="48" width="90" height="44" rx="5"/>
+    <text x="225" y="75" text-anchor="middle">3×3 conv</text>
+    <line class="ln" x1="270" y1="70" x2="294" y2="70" marker-end="url(#arrow)"/>
+    <circle class="plus" cx="306" cy="70" r="12"/>
+    <text class="t-b" x="306" y="75" text-anchor="middle" style="font-size:16px">+</text>
+    <line class="ln" x1="318" y1="70" x2="342" y2="70" marker-end="url(#arrow)"/>
+    <rect class="b-plain" x="342" y="48" width="56" height="44" rx="5"/>
+    <text x="370" y="75" text-anchor="middle">ReLU</text>
+    <line class="ln" x1="398" y1="70" x2="440" y2="70" marker-end="url(#arrow)"/>
+    <text class="t-b" x="446" y="74">out</text>
+    <path class="ln" d="M30 70 V142 H62"/>
+    <rect class="b-plain" x="62" y="122" width="180" height="40" rx="5" style="stroke-dasharray:4 3"/>
+    <text x="152" y="139" text-anchor="middle">1×1 conv</text>
+    <text class="t-m" x="152" y="154" text-anchor="middle">only when channels change</text>
+    <path class="ln" d="M242 142 H306 V84" marker-end="url(#arrow)"/>
+    <text class="t-m" x="316" y="140">skip: adds x back</text>
+  </g>
+</svg>
